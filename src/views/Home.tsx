@@ -1,7 +1,7 @@
 import { defineComponent } from "vue"
 import "@/style/home.less"
 import { onMounted } from "vue"
-import styled from "@magister_zito/vue3-styled-components"
+import StatusLine from "./components/StatusLine"
 
 export default defineComponent({
   name: "Home",
@@ -10,14 +10,10 @@ export default defineComponent({
       console.log("init")
     })
     return () => (
-      <Wrapper>
-        <div></div>
-      </Wrapper>
+      <div>
+        <StatusLine />
+        <div>home</div>
+      </div>
     )
   },
 })
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`

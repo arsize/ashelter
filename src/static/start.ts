@@ -1,4 +1,6 @@
 /**
  * 流程
  */
-export const start = () => {}
+export const start = () => {
+  return
+}
