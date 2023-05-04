@@ -42,7 +42,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      # 上传打包资源
+      # 上传
       - name: Deploy
         uses: easingthemes/ssh-deploy@main
         env:
