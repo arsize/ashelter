@@ -2,6 +2,7 @@ import { defineComponent } from "vue"
 import "@/style/home.less"
 import { onMounted } from "vue"
 import StatusLine from "./components/StatusLine"
+import { NSpace, NCard } from "naive-ui"
 
 export default defineComponent({
   name: "Home",
@@ -10,11 +11,11 @@ export default defineComponent({
       console.log("init")
     })
     return () => (
-      <div>
-        <div>home</div>
-        <StatusLine />
-        <div>home</div>
-      </div>
+      <NSpace vertical>
+        <NCard size="medium" hoverable>
+          <StatusLine />
+        </NCard>
+      </NSpace>
     )
   },
 })
