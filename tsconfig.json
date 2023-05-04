@@ -6,6 +6,9 @@
         "src/*"
       ],
     },
+    "types": [
+      "naive-ui/volar"
+    ],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
