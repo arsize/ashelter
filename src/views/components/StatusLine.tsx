@@ -6,7 +6,7 @@ export default defineComponent({
   setup() {
     return () => (
       <Wrapper>
-        <div>体力:</div>
+        <div>体力2:</div>
       </Wrapper>
     )
   },
