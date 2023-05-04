@@ -11,6 +11,7 @@ export default defineComponent({
     })
     return () => (
       <div>
+        <div>home</div>
         <StatusLine />
         <div>home</div>
       </div>
