@@ -1,7 +1,7 @@
 import { defineComponent } from "vue"
 import "@/style/home.less"
 import { onMounted } from "vue"
-import StatusLine from "./components/StatusLine"
+import StatusLine from "./components/ToolsLine"
 import { NSpace, NCard } from "naive-ui"
 
 export default defineComponent({
