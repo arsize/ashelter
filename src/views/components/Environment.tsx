@@ -1,4 +1,4 @@
-import { defineComponent, reactive, watchEffect } from "vue"
+import { defineComponent, reactive } from "vue"
 import styled from "vue3-styled-components"
 import { Icon } from "@vicons/utils"
 import { AccessTimeRound } from "@vicons/material"

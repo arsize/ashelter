@@ -1,8 +1,6 @@
-import { defineComponent, reactive } from "vue"
+import { defineComponent } from "vue"
 import styled from "vue3-styled-components"
-import { Icon } from "@vicons/utils"
-import { AccessTimeRound } from "@vicons/material"
-import { NNumberAnimation, NSpace, NStatistic } from "naive-ui"
+import { NNumberAnimation, NStatistic } from "naive-ui"
 
 // 物资清单
 export default defineComponent({
