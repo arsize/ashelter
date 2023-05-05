@@ -1,4 +1,4 @@
-import { defineComponent } from "vue"
+import { defineComponent, ref } from "vue"
 import "@/style/home.less"
 import { onMounted, h } from "vue"
 import ToolsLine from "./components/ToolsLine"
@@ -17,11 +17,18 @@ export default defineComponent({
   name: "Home",
   setup() {
     const message = useMessage()
+    let loading = ref(false)
     onMounted(() => {
       message.warning(config.firstInfo, {
         icon: () => h(NIcon, null, { default: () => h(Alert16Regular) }),
       })
     })
+    const handleClick = () => {
+      loading.value = true
+      setTimeout(() => {
+        loading.value = false
+      }, 500)
+    }
 
     return () => (
       <Wrapper>
@@ -48,7 +55,14 @@ export default defineComponent({
               class="status"
               v-slots={{
                 "header-extra": () => {
-                  return <Btn title="伐木" icon={<CarpenterTwotone />} />
+                  return (
+                    <Btn
+                      loading={loading.value}
+                      onTrigger={handleClick}
+                      title="伐木"
+                      icon={<CarpenterTwotone />}
+                    />
+                  )
                 },
               }}
             >

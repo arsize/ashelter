@@ -11,22 +11,26 @@ interface ToolsProps {
   type?: Type
   disabled?: boolean
   tootip?: string
+  loading?: boolean
+  onTrigger?: () => void
 }
 
-export const ToolsBtn: FC<ToolsProps> = ({
-  icon,
-  title,
-  style,
-  type,
-  disabled,
-  tootip = "敬请期待",
-}) => (
+export const ToolsBtn: FC<ToolsProps> = (
+  { icon, title, style, type, disabled, loading, tootip = "敬请期待" },
+  { emit }
+) => (
   <Margin style={style}>
     <NPopover trigger="hover" disabled={!disabled}>
       {{
         default: () => tootip,
         trigger: () => (
-          <NButton tag="div" disabled={disabled} type={type}>
+          <NButton
+            onClick={() => emit("trigger", true)}
+            loading={loading}
+            tag="div"
+            disabled={disabled}
+            type={type}
+          >
             <Icon size={16}>{icon}</Icon>
             <div style={{ marginLeft: "5px" }}>{title}</div>
           </NButton>
@@ -35,6 +39,8 @@ export const ToolsBtn: FC<ToolsProps> = ({
     </NPopover>
   </Margin>
 )
+
+ToolsBtn.emits = ["trigger"]
 
 const Margin = styled.div`
   margin-right: 15px;
