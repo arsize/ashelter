@@ -26,7 +26,7 @@ export default defineComponent({
           <Btn
             disabled
             style={_style}
-            title="工作台"
+            title="研究"
             icon={<CarpenterTwotone />}
           />
         </div>
@@ -41,7 +41,6 @@ export default defineComponent({
 })
 
 const Wrapper = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

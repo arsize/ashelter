@@ -1,4 +1,4 @@
-import { FunctionalComponent as FC, StyleValue, VNode, render } from "vue"
+import { FunctionalComponent as FC, StyleValue, VNode } from "vue"
 import { NButton, NPopover } from "naive-ui"
 import { Icon } from "@vicons/utils"
 import styled from "vue3-styled-components"
@@ -10,6 +10,7 @@ interface ToolsProps {
   style?: StyleValue
   type?: Type
   disabled?: boolean
+  tootip?: string
 }
 
 export const ToolsBtn: FC<ToolsProps> = ({
@@ -18,13 +19,14 @@ export const ToolsBtn: FC<ToolsProps> = ({
   style,
   type,
   disabled,
+  tootip = "敬请期待",
 }) => (
   <Margin style={style}>
-    <NPopover trigger="hover">
+    <NPopover trigger="hover" disabled={!disabled}>
       {{
-        default: () => "或许不想知道你的花园长得咋样",
+        default: () => tootip,
         trigger: () => (
-          <NButton disabled={disabled} type={type}>
+          <NButton tag="div" disabled={disabled} type={type}>
             <Icon size={16}>{icon}</Icon>
             <div style={{ marginLeft: "5px" }}>{title}</div>
           </NButton>
