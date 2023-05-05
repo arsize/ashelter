@@ -14,7 +14,7 @@ export default defineComponent({
           </NStatistic>
         </Block>
         <Block>
-          <NStatistic label="石头">
+          <NStatistic label="石材">
             <NNumberAnimation from={0} to={0}></NNumberAnimation>
           </NStatistic>
         </Block>
@@ -55,6 +55,11 @@ export default defineComponent({
         </Block>
         <Block>
           <NStatistic label="水晶">
+            <NNumberAnimation from={0} to={0}></NNumberAnimation>
+          </NStatistic>
+        </Block>
+        <Block style={{ display: "display" }}>
+          <NStatistic label="火药">
             <NNumberAnimation from={0} to={0}></NNumberAnimation>
           </NStatistic>
         </Block>

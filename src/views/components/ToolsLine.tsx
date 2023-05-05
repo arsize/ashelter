@@ -4,7 +4,7 @@ import { ToolsBtn as Btn } from "./ToolsBtn"
 import {
   AddBusinessTwotone,
   WarehouseOutlined,
-  CarpenterTwotone,
+  ScienceOutlined,
   SettingsOutlined,
   HikingOutlined,
 } from "@vicons/material"
@@ -27,7 +27,7 @@ export default defineComponent({
             disabled
             style={_style}
             title="研究"
-            icon={<CarpenterTwotone />}
+            icon={<ScienceOutlined />}
           />
         </div>
         <div class="right">

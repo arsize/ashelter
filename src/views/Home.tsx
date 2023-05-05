@@ -9,6 +9,8 @@ import { StatusPanel } from "./components/StatusPanel"
 import Environment from "./components/Environment"
 import Materials from "./components/Materials"
 import styled from "vue3-styled-components"
+import { ToolsBtn as Btn } from "./components/ToolsBtn"
+import { CarpenterTwotone } from "@vicons/material"
 
 export default defineComponent({
   name: "Home",
@@ -30,7 +32,17 @@ export default defineComponent({
             <Environment />
           </NCard>
           <div style={{ width: "1px", height: "10px" }}></div>
-          <NCard title="物资" hoverable size="large" class="status">
+          <NCard
+            title="物资"
+            hoverable
+            size="large"
+            class="status"
+            v-slots={{
+              "header-extra": () => {
+                return <Btn title="伐木" icon={<CarpenterTwotone />} />
+              },
+            }}
+          >
             <Materials />
           </NCard>
           <div style={{ width: "1px", height: "10px" }}></div>

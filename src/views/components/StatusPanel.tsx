@@ -14,7 +14,7 @@ export const StatusPanel: FC = () => (
               style={{ width: "60px" }}
               type="circle"
               percentage={90}
-              offset-degree="180"
+              offset-degree={180}
               color={"#ec1010"}
             >
               <span style={{ textAlign: "center" }}>生命</span>
@@ -33,7 +33,7 @@ export const StatusPanel: FC = () => (
               style={{ width: "60px" }}
               type="circle"
               percentage={90}
-              offset-degree="180"
+              offset-degree={180}
             >
               <span style={{ textAlign: "center" }}>饱腹</span>
             </NProgress>
@@ -50,7 +50,7 @@ export const StatusPanel: FC = () => (
               style={{ width: "60px" }}
               type="circle"
               percentage={90}
-              offset-degree="180"
+              offset-degree={180}
             >
               <span style={{ textAlign: "center" }}>口渴</span>
             </NProgress>
@@ -67,26 +67,9 @@ export const StatusPanel: FC = () => (
               style={{ width: "60px" }}
               type="circle"
               percentage={90}
-              offset-degree="180"
+              offset-degree={180}
             >
               <span style={{ textAlign: "center" }}>耐力</span>
-            </NProgress>
-          ),
-        }}
-      </NTooltip>
-      <NTooltip trigger="hover">
-        {{
-          default: () => 90,
-          trigger: () => (
-            <NProgress
-              color={"#54b73e"}
-              class="progress"
-              style={{ width: "60px" }}
-              type="circle"
-              percentage={90}
-              offset-degree="180"
-            >
-              <span style={{ textAlign: "center" }}>SAN</span>
             </NProgress>
           ),
         }}
@@ -101,9 +84,26 @@ export const StatusPanel: FC = () => (
               style={{ width: "60px" }}
               type="circle"
               percentage={90}
-              offset-degree="180"
+              offset-degree={180}
             >
               <span style={{ textAlign: "center" }}>体温</span>
+            </NProgress>
+          ),
+        }}
+      </NTooltip>
+      <NTooltip trigger="hover">
+        {{
+          default: () => 90,
+          trigger: () => (
+            <NProgress
+              color={"#54b73e"}
+              class="progress"
+              style={{ width: "60px" }}
+              type="circle"
+              percentage={90}
+              offset-degree={180}
+            >
+              <span style={{ textAlign: "center" }}>SAN</span>
             </NProgress>
           ),
         }}
