@@ -11,52 +11,65 @@ import Materials from "./components/Materials"
 import styled from "vue3-styled-components"
 import { ToolsBtn as Btn } from "./components/ToolsBtn"
 import { CarpenterTwotone } from "@vicons/material"
+import { config } from "@/global"
 
 export default defineComponent({
   name: "Home",
   setup() {
     const message = useMessage()
     onMounted(() => {
-      message.warning("欢迎来到末日庇护所", {
+      message.warning(config.firstInfo, {
         icon: () => h(NIcon, null, { default: () => h(Alert16Regular) }),
       })
     })
 
     return () => (
-      <NSpace vertical>
-        <NCard size="medium" hoverable>
-          <ToolsLine />
-        </NCard>
-        <Layout>
-          <NCard title="环境" hoverable size="large" class="status">
-            <Environment />
+      <Wrapper>
+        <NSpace vertical>
+          <NCard size="medium" hoverable>
+            <ToolsLine />
           </NCard>
-          <div style={{ width: "1px", height: "10px" }}></div>
-          <NCard
-            title="物资"
-            hoverable
-            size="large"
-            class="status"
-            v-slots={{
-              "header-extra": () => {
-                return <Btn title="伐木" icon={<CarpenterTwotone />} />
-              },
-            }}
-          >
-            <Materials />
-          </NCard>
-          <div style={{ width: "1px", height: "10px" }}></div>
-          <NCard title="状态" hoverable size="large" class="status">
-            <StatusPanel />
-          </NCard>
-        </Layout>
+          <Layout>
+            <NCard
+              contentStyle={{ padding: "0 20px" }}
+              title="环境"
+              hoverable
+              size="large"
+              class="status"
+            >
+              <Environment />
+            </NCard>
+            <div style={{ width: "1px", height: "10px" }}></div>
+            <NCard
+              title="物资"
+              hoverable
+              size="large"
+              contentStyle={{ padding: 0 }}
+              class="status"
+              v-slots={{
+                "header-extra": () => {
+                  return <Btn title="伐木" icon={<CarpenterTwotone />} />
+                },
+              }}
+            >
+              <Materials />
+            </NCard>
+            <div style={{ width: "1px", height: "10px" }}></div>
+            <NCard title="状态" hoverable size="large" class="status">
+              <StatusPanel />
+            </NCard>
+          </Layout>
 
-        <Footer />
-      </NSpace>
+          <Footer />
+        </NSpace>
+      </Wrapper>
     )
   },
 })
 
+const Wrapper = styled.div`
+  padding-bottom: 50px;
+`
 const Layout = styled.div`
   .status {
     width: 600px;
