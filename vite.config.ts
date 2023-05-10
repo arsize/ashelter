@@ -1,16 +1,33 @@
 import { defineConfig } from "vite"
-import vue from "@vitejs/plugin-vue"
-import vueJsx from "@vitejs/plugin-vue-jsx"
+import react from "@vitejs/plugin-react"
 import path from "path"
+import presetEnv from "postcss-preset-env"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          [
+            "babel-plugin-styled-components",
+            {
+              displayName: true,
+              fileName: false,
+            },
+          ],
+        ],
+      },
+    }),
+  ],
+  css: {
+    postcss: {
+      plugins: [presetEnv],
+    },
+  },
   resolve: {
     alias: {
-      "@": path.join(__dirname, "src"),
+      "@": path.resolve(__dirname, "src"),
     },
-    // 省略文件后缀
-    extensions: ["", ".js", ".json", ".vue", ".scss", ".css", ".ts", ".tsx"],
   },
 })

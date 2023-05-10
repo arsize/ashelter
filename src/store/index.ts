@@ -1,4 +1,16 @@
-import { createPinia } from "pinia"
+import { create } from 'zustand'
 
-const pinia = createPinia()
-export default pinia
+interface BearState {
+  light: boolean
+  change: () => void
+}
+
+const useThemeStore = create<BearState>((set) => ({
+  light: true,
+  change: () =>
+    set((state) => ({
+      light: !state.light,
+    })),
+}))
+
+export default useThemeStore

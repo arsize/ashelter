@@ -1,22 +1,27 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "paths": {
       "@/*": [
         "src/*"
       ],
     },
-    "types": [
-      "naive-ui/volar"
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
     ],
-    "target": "ES2020",
-    "useDefineForClassFields": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./typings"
+    ],
     "module": "ESNext",
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
     "skipLibCheck": true,
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -24,7 +29,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -32,10 +37,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
+    "src"
   ],
   "references": [
     {

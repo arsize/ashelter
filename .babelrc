@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    [
+      "styled-components-px2vw",
+      {
+        "unitToConvert": "px",
+        "unitPrecision": 5,
+        "minPixelValue": 0
+      }
+    ]
+  ]
+}
