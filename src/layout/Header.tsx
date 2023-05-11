@@ -12,7 +12,10 @@ import { AddressCardRegular } from '@ricons/fa'
 import styled from 'styled-components'
 
 const Header: FC = () => {
-  const handleShow = () => {}
+  const handleShow = () => {
+    console.log('todo')
+  }
+  console.log(handleShow())
 
   return (
     <Card style={{ width: '100%' }}>
