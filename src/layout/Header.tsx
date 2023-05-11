@@ -11,26 +11,34 @@ import {
 import { AddressCardRegular } from '@ricons/fa'
 import styled from 'styled-components'
 
-const Header: FC = () => (
-  <Card style={{ width: '100%' }}>
-    <Line>
-      <div className="left">
-        <Space>
-          <Btn title="建造" icon={<AddBusinessTwotone />} />
-          <Btn title="仓库" icon={<WarehouseOutlined />} />
-          <Btn title="研究" icon={<ScienceOutlined />} />
-        </Space>
-      </div>
-      <div className="right">
-        <Space>
-          <Btn title="装备" icon={<AddressCardRegular />} />
-          <Btn title="探索" icon={<HikingOutlined />} />
-          <Btn title="设置" icon={<SettingsOutlined />} />
-        </Space>
-      </div>
-    </Line>
-  </Card>
-)
+const Header: FC = () => {
+  const handleShow = () => {}
+
+  return (
+    <Card style={{ width: '100%' }}>
+      <Line>
+        <div className="left">
+          <Space size={'large'}>
+            <Btn
+              onClick={handleShow}
+              title="建造"
+              icon={<AddBusinessTwotone />}
+            />
+            <Btn title="仓库" icon={<WarehouseOutlined />} />
+            <Btn title="研究" icon={<ScienceOutlined />} />
+          </Space>
+        </div>
+        <div className="right">
+          <Space size={'large'}>
+            <Btn title="装备" icon={<AddressCardRegular />} />
+            <Btn title="探索" icon={<HikingOutlined />} />
+            <Btn title="设置" icon={<SettingsOutlined />} />
+          </Space>
+        </div>
+      </Line>
+    </Card>
+  )
+}
 
 const Line = styled.div`
   width: 100%;

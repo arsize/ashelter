@@ -14,6 +14,7 @@ interface BtnProps {
   type?: ButtonType
   disabled?: boolean
   tooltip?: string
+  onClick?: () => void
 }
 
 const ToolsBtn: FC<BtnProps> = (props) => {
@@ -31,6 +32,7 @@ const ToolsBtn: FC<BtnProps> = (props) => {
         open={props.disabled && mouseIn}
       >
         <Button
+          onClick={props.onClick}
           className="btn"
           style={{ width: '100%', height: '100%' }}
           type={props.type}

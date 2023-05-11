@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-import { theme, Switch } from 'antd'
+import { theme } from 'antd'
 import useThemeStore from '@/store'
-
+import Environment from './components/Environment'
+import Statistics from './components/Statistics'
+import WareHouse from './components/Warehouse'
 const { useToken } = theme
 
 function Home() {
@@ -18,12 +20,9 @@ function Home() {
         color: token.colorText,
       }}
     >
-      <Switch
-        onClick={changeTheme}
-        className="switch"
-        checkedChildren="夜间"
-        unCheckedChildren="白天"
-      />
+      <Environment />
+      <Statistics />
+      <WareHouse />
     </Wrapper>
   )
 }
