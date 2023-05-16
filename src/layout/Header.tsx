@@ -15,7 +15,6 @@ const Header: FC = () => {
   const handleShow = () => {
     console.log('todo')
   }
-  console.log(handleShow())
 
   return (
     <Card style={{ width: '100%' }}>
@@ -31,6 +30,7 @@ const Header: FC = () => {
             <Btn title="研究" icon={<ScienceOutlined />} />
           </Space>
         </div>
+        <div className="center">{}</div>
         <div className="right">
           <Space size={'large'}>
             <Btn title="装备" icon={<AddressCardRegular />} />

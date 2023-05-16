@@ -4,10 +4,12 @@ import React from 'react'
 import Header from './Header'
 import LoadingFloatBtn from '@/views/components/LoadingFloatBtn'
 import { CarpenterTwotone } from '@ricons/material'
+import useWareStore from '@/store/ware'
 
 const { useToken } = theme
 
 const Layout: React.FC = () => {
+  const ware = useWareStore()
   const { token } = useToken()
   return (
     <div
@@ -20,6 +22,7 @@ const Layout: React.FC = () => {
       <Header />
       <Content />
       <LoadingFloatBtn
+        onClick={() => ware.addWood(1)}
         tooltip="伐木"
         icon={<CarpenterTwotone />}
         loading

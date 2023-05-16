@@ -15,6 +15,7 @@ interface LFloatButton {
   style?: React.CSSProperties
   icon?: React.ReactNode
   loading?: boolean
+  onClick: () => void
 }
 
 // 扩展floatButtong-loading功能
@@ -26,11 +27,12 @@ const LoadingFloatBtn: FC<LFloatButton> = (props) => {
     setTimeout(() => {
       setLoadings(false)
     }, 1000)
+    props.onClick()
   }
   return (
     <div>
       <FloatButton
-        onClick={!loadings ? clickEven : () => {}}
+        onClick={!loadings ? clickEven : props.onClick}
         tooltip={props.tooltip}
         shape={props.shape}
         type={props.type}
