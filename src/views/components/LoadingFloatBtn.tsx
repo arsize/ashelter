@@ -22,13 +22,13 @@ interface LFloatButton {
 const LoadingFloatBtn: FC<LFloatButton> = (props) => {
   const [loadings, setLoadings] = useState(false)
   const clickEven = () => {
-    console.log('触发')
     setLoadings(true)
     setTimeout(() => {
       setLoadings(false)
     }, 1000)
     props.onClick()
   }
+
   return (
     <div>
       <FloatButton
@@ -44,7 +44,6 @@ const LoadingFloatBtn: FC<LFloatButton> = (props) => {
 }
 
 LoadingFloatBtn.defaultProps = {
-  tooltip: '默认',
   shape: 'square',
   type: 'default',
   loading: false,

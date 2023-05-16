@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 
+// 角色面板
 interface RoleState {
   life: number //生命值
   hunger: number //饥饿值

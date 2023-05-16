@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
+// 采集资源缓存
 interface WareState {
   wood: number //木材
   stone: number //石头

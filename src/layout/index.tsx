@@ -10,6 +10,7 @@ const { useToken } = theme
 
 const Layout: React.FC = () => {
   const ware = useWareStore()
+
   const { token } = useToken()
   return (
     <div
@@ -23,7 +24,6 @@ const Layout: React.FC = () => {
       <Content />
       <LoadingFloatBtn
         onClick={() => ware.addWood(1)}
-        tooltip="伐木"
         icon={<CarpenterTwotone />}
         loading
         style={{ right: '30px' }}
