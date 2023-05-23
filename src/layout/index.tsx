@@ -6,10 +6,11 @@ import LoadingFloatBtn from '@/views/components/LoadingFloatBtn'
 import { CarpenterTwotone } from '@ricons/material'
 import useWareStore from '@/store/ware'
 import useMyStore from '@/store/userInfo'
+import styled from 'styled-components'
 
 const { useToken } = theme
 
-const Layout: React.FC = () => {
+const LayoutWarp: React.FC = () => {
   const ware = useWareStore()
   const user = useMyStore()
   const { token } = useToken()
@@ -30,14 +31,15 @@ const Layout: React.FC = () => {
   }, [user.isFirstOpen])
 
   return (
-    <div
+    <Wrapper
       style={{
         backgroundColor: token.colorBgLayout,
-        width: '100vw',
+        color: token.colorText,
       }}
     >
       <Header />
       <Content />
+
       <FloatButton.BackTop
         visibilityHeight={1}
         style={{ right: '30px', bottom: '110px' }}
@@ -49,10 +51,22 @@ const Layout: React.FC = () => {
         loading
         style={{ right: '30px', bottom: '50px' }}
       />
-
       <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
-    </div>
+    </Wrapper>
   )
 }
 
-export default Layout
+const Wrapper = styled.div`
+  width: 100vw;
+  height: auto;
+  overflow-y: scroll;
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+`
+
+export default LayoutWarp

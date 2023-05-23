@@ -9,7 +9,7 @@ interface UserState {
 
 const useMyStore = create<UserState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       isFirstOpen: true,
       change: (val: boolean) => {
         set({
@@ -18,7 +18,7 @@ const useMyStore = create<UserState>()(
       },
     }),
     {
-      name: 'user-storage',
+      name: 'user-info',
       storage: createJSONStorage(() => localStorage),
     }
   )

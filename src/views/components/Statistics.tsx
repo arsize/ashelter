@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import { Card, Progress, Descriptions } from 'antd'
-import useRoleStasStore from '@/store/roleState'
+import { Card, Descriptions, Progress } from 'antd'
+import { G } from '@/config'
+import useRoleStasStore from '@/store/roleHealth'
 
 // 人物角色数据
 const Statistics: FC = () => {
@@ -12,66 +13,20 @@ const Statistics: FC = () => {
         size="small"
         column={{ xs: 3, sm: 4, md: 6 }}
       >
-        <Descriptions.Item>
-          <Progress
-            type="circle"
-            percent={userInfo.life}
-            size={80}
-            format={(percent) => (
-              <span style={{ fontSize: '13px' }}>{`生命:${percent}`}</span>
-            )}
-          />
-        </Descriptions.Item>
-        <Descriptions.Item>
-          <Progress
-            type="circle"
-            percent={userInfo.hunger}
-            size={80}
-            format={(percent) => (
-              <span style={{ fontSize: '13px' }}>{`饱腹:${percent}`}</span>
-            )}
-          />
-        </Descriptions.Item>
-        <Descriptions.Item>
-          <Progress
-            type="circle"
-            percent={userInfo.thirsty}
-            size={80}
-            format={(percent) => (
-              <span style={{ fontSize: '13px' }}>{`口渴:${percent}`}</span>
-            )}
-          />
-        </Descriptions.Item>
-        <Descriptions.Item>
-          <Progress
-            type="circle"
-            percent={userInfo.endurance}
-            size={80}
-            format={(percent) => (
-              <span style={{ fontSize: '13px' }}>{`耐力:${percent}`}</span>
-            )}
-          />
-        </Descriptions.Item>
-        <Descriptions.Item>
-          <Progress
-            type="circle"
-            percent={userInfo.temperature}
-            size={80}
-            format={(percent) => (
-              <span style={{ fontSize: '13px' }}>{`体温:${percent}`}</span>
-            )}
-          />
-        </Descriptions.Item>
-        <Descriptions.Item>
-          <Progress
-            type="circle"
-            percent={userInfo.san}
-            size={80}
-            format={(percent) => (
-              <span style={{ fontSize: '13px' }}>{`SAN:${percent}`}</span>
-            )}
-          />
-        </Descriptions.Item>
+        {G.healthInfo.map((item, i) => (
+          <Descriptions.Item key={i}>
+            <Progress
+              type="circle"
+              percent={userInfo[item.key]}
+              size={80}
+              format={(percent) => (
+                <span
+                  style={{ fontSize: '13px' }}
+                >{`${item.title}:${percent}`}</span>
+              )}
+            />
+          </Descriptions.Item>
+        ))}
       </Descriptions>
     </Card>
   )

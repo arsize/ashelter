@@ -19,7 +19,7 @@
     ],
     "typeRoots": [
       "./node_modules/@types",
-      "./typings"
+      "src/typings"
     ],
     "module": "ESNext",
     "noImplicitAny": true,
@@ -38,7 +38,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src"
+    "src",
   ],
   "references": [
     {

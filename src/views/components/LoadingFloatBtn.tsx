@@ -1,6 +1,5 @@
 import { FloatButton } from 'antd'
-import { FC, forwardRef, useState } from 'react'
-
+import { forwardRef, useState } from 'react'
 import { LoadingOutlined } from '@ant-design/icons'
 
 import {

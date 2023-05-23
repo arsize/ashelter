@@ -8,6 +8,7 @@ body {
   -ms-overflow-style: none; /* IE 10+ */
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: #141414;
 }
 body::-webkit-scrollbar {
   display: none; /* Chrome Safari */
@@ -28,4 +29,7 @@ p {
 img {
   overflow-clip-margin: content-box;
   overflow: clip;
+}
+.css-dev-only-do-not-override-oxebh3.ant-tour {
+  width: 300px;
 }
