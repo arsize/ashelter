@@ -6,6 +6,7 @@ import useThemeStore from './store'
 import { StyleProvider } from '@ant-design/cssinjs'
 import { useEffect } from 'react'
 import useMyStore from './store/userInfo'
+import { G } from './config'
 
 const App = () => {
   const { light } = useThemeStore()
@@ -14,10 +15,10 @@ const App = () => {
 
   useEffect(() => {
     if (userInfo.isFirstOpen) {
-      msg.info('欢迎来到末日求生!')
+      msg.info(G.firstInMsg)
       userInfo.change(false)
     }
-  }, [])
+  })
 
   return (
     <>

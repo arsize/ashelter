@@ -1,33 +1,56 @@
 import Content from './Content'
-import { theme } from 'antd'
-import React from 'react'
+import { theme, Tour, TourProps, FloatButton } from 'antd'
+import React, { useEffect, useRef, useState } from 'react'
 import Header from './Header'
 import LoadingFloatBtn from '@/views/components/LoadingFloatBtn'
 import { CarpenterTwotone } from '@ricons/material'
 import useWareStore from '@/store/ware'
+import useMyStore from '@/store/userInfo'
 
 const { useToken } = theme
 
 const Layout: React.FC = () => {
   const ware = useWareStore()
-
+  const user = useMyStore()
   const { token } = useToken()
+  const [open, setOpen] = useState<boolean>(false)
+  const refTour = useRef(null)
+
+  const steps: TourProps['steps'] = [
+    {
+      title: '',
+      description: '一切从这里开始，请点击伐木.',
+      target: () => refTour.current,
+    },
+  ]
+  useEffect(() => {
+    if (user.isFirstOpen) {
+      setOpen(true)
+    }
+  }, [user.isFirstOpen])
+
   return (
     <div
       style={{
         backgroundColor: token.colorBgLayout,
         width: '100vw',
-        height: '100vh',
       }}
     >
       <Header />
       <Content />
+      <FloatButton.BackTop
+        visibilityHeight={1}
+        style={{ right: '30px', bottom: '110px' }}
+      />
       <LoadingFloatBtn
+        ref={refTour}
         onClick={() => ware.addWood(1)}
         icon={<CarpenterTwotone />}
         loading
-        style={{ right: '30px' }}
+        style={{ right: '30px', bottom: '50px' }}
       />
+
+      <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
     </div>
   )
 }

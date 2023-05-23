@@ -6,7 +6,7 @@ interface BearState {
 }
 
 const useThemeStore = create<BearState>((set) => ({
-  light: true,
+  light: false,
   change: () =>
     set((state) => ({
       light: !state.light,

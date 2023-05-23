@@ -1,5 +1,5 @@
 import { FloatButton } from 'antd'
-import { FC, useState } from 'react'
+import { FC, forwardRef, useState } from 'react'
 
 import { LoadingOutlined } from '@ant-design/icons'
 
@@ -8,7 +8,7 @@ import {
   FloatButtonType,
 } from 'antd/es/float-button/interface'
 
-interface LFloatButton {
+export interface LFloatButton {
   tooltip?: string
   shape?: FloatButtonShape
   type?: FloatButtonType
@@ -19,7 +19,10 @@ interface LFloatButton {
 }
 
 // 扩展floatButtong-loading功能
-const LoadingFloatBtn: FC<LFloatButton> = (props) => {
+const LoadingFloatBtn = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement | null,
+  LFloatButton
+>((props, ref) => {
   const [loadings, setLoadings] = useState(false)
   const clickEven = () => {
     setLoadings(true)
@@ -32,6 +35,7 @@ const LoadingFloatBtn: FC<LFloatButton> = (props) => {
   return (
     <div>
       <FloatButton
+        ref={ref}
         onClick={!loadings ? clickEven : props.onClick}
         tooltip={props.tooltip}
         shape={props.shape}
@@ -41,7 +45,7 @@ const LoadingFloatBtn: FC<LFloatButton> = (props) => {
       />
     </div>
   )
-}
+})
 
 LoadingFloatBtn.defaultProps = {
   shape: 'square',
