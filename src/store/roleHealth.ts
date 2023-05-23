@@ -29,6 +29,7 @@ const useRoleStasStore = create<RoleState>()(
     }),
     {
       name: 'health-storage',
+      version: 1,
       storage: createJSONStorage(() => localStorage),
     }
   )

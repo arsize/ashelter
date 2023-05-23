@@ -10,7 +10,7 @@ export const G: GlobalConfig = {
     {
       title: '饱腹',
       key: 'hunger',
-      default: 90,
+      default: 80,
     },
     {
       title: '口渴',
