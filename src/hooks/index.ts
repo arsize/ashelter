@@ -1,3 +1,3 @@
-import useNowTime from './useNowTime'
+import useByTime from './useByTime'
 
-export { useNowTime }
+export { useByTime }

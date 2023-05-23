@@ -7,20 +7,25 @@ type BaseHealth = {
   [k in HealthInfo]: number
 }
 type RoleState = BaseHealth & {
-  change: (val: number) => void
+  recordTime: number
+  change: (val: Partial<BaseHealth>) => void
+  changeByTime: (obj: Partial<BaseHealth>, time: number) => void
 }
 
 const useRoleStasStore = create<RoleState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       ...G.healthInfo.reduce((o, c) => {
         o[c.key] = c.default
         return o
       }, {} as BaseHealth),
-      change: (val) =>
-        set({
-          life: val,
-        }),
+      change: (obj) => set(obj),
+      changeByTime: (obj, time) => {
+        if (time - get().recordTime > G.refreshRate) {
+          return set(obj)
+        }
+      },
+      recordTime: new Date().getTime(),
     }),
     {
       name: 'health-storage',

@@ -1,5 +1,5 @@
 import Content from './Content'
-import { theme, Tour, TourProps, FloatButton } from 'antd'
+import { theme, Tour, TourProps, FloatButton, message } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import Header from './Header'
 import LoadingFloatBtn from '@/views/components/LoadingFloatBtn'
@@ -7,6 +7,7 @@ import { CarpenterTwotone } from '@ricons/material'
 import useWareStore from '@/store/ware'
 import useMyStore from '@/store/userInfo'
 import styled from 'styled-components'
+import useRoleStasStore from '@/store/roleHealth'
 
 const { useToken } = theme
 
@@ -16,6 +17,7 @@ const LayoutWarp: React.FC = () => {
   const { token } = useToken()
   const [open, setOpen] = useState<boolean>(false)
   const refTour = useRef(null)
+  const health = useRoleStasStore()
 
   const steps: TourProps['steps'] = [
     {
@@ -46,7 +48,16 @@ const LayoutWarp: React.FC = () => {
       />
       <LoadingFloatBtn
         ref={refTour}
-        onClick={() => ware.addWood(1)}
+        onClick={() => {
+          ware.addWood(1)
+          if (health.endurance > 0) {
+            health.change({
+              endurance: health.endurance - 10,
+            })
+          } else {
+            message.warning('耐力值不够，请休息一下')
+          }
+        }}
         icon={<CarpenterTwotone />}
         loading
         style={{ right: '30px', bottom: '50px' }}

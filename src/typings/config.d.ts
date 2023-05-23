@@ -14,5 +14,6 @@ declare type ConfKeyNum = {
 
 declare type GlobalConfig = {
   firstInMsg: string
+  refreshRate: number
   healthInfo: ConfKeyNum[]
 }

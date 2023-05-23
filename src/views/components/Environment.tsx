@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Card, Descriptions, Skeleton } from 'antd'
-import { useNowTime } from '@/hooks'
+import { useByTime } from '@/hooks'
 import useEnvStore from '@/store/envInfo'
 
 // 环境状态数据
 const Environment: FC = () => {
-  const time = useNowTime()
+  const time = useByTime()
   const envInfo = useEnvStore()
 
   return (

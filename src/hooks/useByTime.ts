@@ -1,13 +1,34 @@
 import { useEffect, useState } from 'react'
+import useRoleStasStore from '@/store/roleHealth'
 
 const useNowTime = () => {
   const [time, setTime] = useState('')
+  const health = useRoleStasStore()
+
+  const checkHealth = () => {}
 
   useEffect(() => {
-    const tick = () => setTime(new Date().toLocaleTimeString())
+    const tick = () => {
+      health.changeByTime(
+        {
+          hunger: health.hunger - 10 > 0 ? health.hunger - 1 : 0,
+          thirsty: health.thirsty - 20 > 0 ? health.thirsty - 2 : 0,
+        },
+        new Date().getTime()
+      )
+      // 耐力值恢复
+      if (health.endurance < 100) {
+        health.change({
+          endurance: health.endurance + 1,
+        })
+      }
+
+      checkHealth()
+      return setTime(new Date().toLocaleTimeString())
+    }
     const timer = setTimeout(tick, 1000)
     return () => clearTimeout(timer)
-  }, [time])
+  }, [health, time])
   return time
 }
 
