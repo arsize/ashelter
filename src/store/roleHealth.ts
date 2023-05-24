@@ -10,6 +10,7 @@ type RoleState = BaseHealth & {
   recordTime: number
   change: (val: Partial<BaseHealth>) => void
   changeByTime: (obj: Partial<BaseHealth>, time: number) => void
+  changeRecordTime: (time: number) => void
 }
 
 const useRoleStasStore = create<RoleState>()(
@@ -20,8 +21,13 @@ const useRoleStasStore = create<RoleState>()(
         return o
       }, {} as BaseHealth),
       change: (obj) => set(obj),
+      changeRecordTime: (time) =>
+        set({
+          recordTime: time,
+        }),
       changeByTime: (obj, time) => {
         if (time - get().recordTime > G.refreshRate) {
+          get().changeRecordTime(time)
           return set(obj)
         }
       },
@@ -29,7 +35,7 @@ const useRoleStasStore = create<RoleState>()(
     }),
     {
       name: 'health-storage',
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => localStorage),
     }
   )

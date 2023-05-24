@@ -11,8 +11,8 @@ const useNowTime = () => {
     const tick = () => {
       health.changeByTime(
         {
-          hunger: health.hunger - 10 > 0 ? health.hunger - 1 : 0,
-          thirsty: health.thirsty - 20 > 0 ? health.thirsty - 2 : 0,
+          hunger: health.hunger - 1 > 0 ? health.hunger - 1 : 0,
+          thirsty: health.thirsty - 2 > 0 ? health.thirsty - 2 : 0,
         },
         new Date().getTime()
       )

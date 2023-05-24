@@ -1,6 +1,6 @@
 export const G: GlobalConfig = {
   firstInMsg: '欢迎来到末日求生，请尽力生存下去',
-  refreshRate: 600000, //10分钟更新一次
+  refreshRate: 300000, //5分钟更新一次
   healthInfo: [
     {
       title: '生命',
